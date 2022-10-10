@@ -32,8 +32,12 @@ jobs:
         run: npm run test:clean
       - name: Generate Report
         run: npm run mochawesome
-      - name: Reports deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.4.0
+      - uses: actions/upload-artifact@v3
         with:
-            branch: gh-pages
-            folder: mochawesome-report
+          name: mochawesome-report
+          path: mochawesome-report
+      # - name: Reports deploy 🚀
+      #   uses: JamesIves/github-pages-deploy-action@v4.4.0
+      #   with:
+      #       branch: gh-pages
+      #       folder: mochawesome-report
