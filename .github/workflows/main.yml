@@ -25,11 +25,15 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          command: npm run cypress
-          # build: npm run build
-          # start: npm run preview
+          # command: npm run cypress
+          build: npm run build
+          start: npm run preview
+      - name: Clear reports
+        run: npm run test:clean
+      - name: Generate Report
+        run: npm run mochawesome
       - name: Reports deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        uses: JamesIves/github-pages-deploy-action@v4.4.0
         with:
             branch: gh-pages
             folder: mochawesome-report
