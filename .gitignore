@@ -15,6 +15,10 @@ dist-ssr
 
 /cypress/videos/
 /cypress/screenshots/
+/cypress/results/
+
+/mochawesome-report/
+mochawesome.json
 
 # Editor directories and files
 .vscode
