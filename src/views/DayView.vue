@@ -6,6 +6,9 @@ import { getDay } from "@/components/Days";
 export default defineComponent({
   name: "DayView",
   components: { FileUpload },
+  props: {
+    id: { type: String },
+  },
   data() {
     return {
       result1: undefined as unknown as string,
@@ -14,7 +17,7 @@ export default defineComponent({
   },
   methods: {
     async fileContent(input: string[]) {
-      const day = getDay(parseInt(this.$route.params.id));
+      const day = getDay(parseInt(this.id ?? ""));
       [this.result1, this.result2] = await Promise.all([
         day?.solution1(input),
         day?.solution2(input),
@@ -29,8 +32,8 @@ export default defineComponent({
 <template>
   <div>
     <div class="about">
-      <h1>Day {{ $route.params.id }}</h1>
-      <FileUpload :id="$route.params.id" @file-content="fileContent" />
+      <h1>Day {{ id }}</h1>
+      <FileUpload :id="id" @file-content="fileContent" />
     </div>
     <div>
       <div v-if="!!result1" class="answer">

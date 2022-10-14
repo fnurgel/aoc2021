@@ -2,6 +2,10 @@ import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 import { DaySolution } from "../Day3";
 
+/**
+ * @vitest-environment jsdom
+ */
+
 describe("Day3", () => {
   const input = [
     "00100",
